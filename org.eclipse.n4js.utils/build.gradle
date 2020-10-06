@@ -1,0 +1,7 @@
+dependencies {
+	compile "org.eclipse.xtext:org.eclipse.xtext:${xtextVersion}"
+	compile "org.eclipse.xtext:org.eclipse.xtext.xbase:${xtextVersion}"
+	
+	// https://mvnrepository.com/artifact/org.eclipse.core/org.eclipse.core.resources
+	compile group: 'org.eclipse.core', name: 'org.eclipse.core.resources', version: '3.7.100'
+}
