@@ -1,0 +1,8 @@
+dependencies {
+	compile "org.eclipse.xtext:org.eclipse.xtext:${xtextVersion}"
+	compile "org.eclipse.xtext:org.eclipse.xtext.xbase:${xtextVersion}"
+	
+//	compile project(':org.eclipse.n4js.model')
+	compile project(':org.eclipse.n4js.utils')
+
+}
