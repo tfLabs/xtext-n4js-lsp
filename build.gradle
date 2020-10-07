@@ -53,6 +53,38 @@ configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 
 }
 
+configure(subprojects.findAll { it.name.startsWith('org.eclipse.n4js') }) {
+
+	ext.xtextVersion = '2.20.0'
+	repositories {
+		maven {
+			url 'https://oss.sonatype.org/content/repositories/snapshots'
+		}
+		jcenter()
+	}
+	
+	apply plugin: 'java'
+	dependencies {
+		compile platform("org.eclipse.xtext:xtext-dev-bom:${xtextVersion}")
+	}
+	apply plugin: 'org.xtext.xtend'
+	apply from: "${rootDir}/gradle/source-layout.gradle"
+	apply from: "${rootDir}/gradle/maven-deployment.gradle"
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+	
+	group = 'org.eclipse.n4js'
+	version = '1.0.0-SNAPSHOT'
+	
+	sourceCompatibility = '1.8'
+	targetCompatibility = '1.8'
+	
+	configurations.all {
+		exclude group: 'asm'
+	}
+
+}
+
 task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {
 	ext.destPath = "$rootProject.projectDir/node_modules/vsce" 
 	outputs.dir(destPath)
